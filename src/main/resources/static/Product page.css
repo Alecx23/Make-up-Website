@@ -1,0 +1,166 @@
+html,body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    color: #333;
+}
+
+main {
+    flex: 1;
+}
+
+header {
+    padding: 26px;
+    text-align: center;
+    margin-bottom:80px;
+}
+
+button{
+    padding: 16px 38px;
+    cursor: pointer;
+    border-radius: 100px
+}
+
+/*Navigation Bar*/
+
+.nav-container{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.company-name{
+    margin:0;
+    font-size: 24px;
+    flex:1;
+    text-align: left;
+    font-weight: bold;
+}
+
+nav{
+    display: flex;
+    flex:2;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding:0;
+    gap: 32px;
+}
+
+nav ul li a{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav ul li a:hover{
+    color:#ff6b6b;
+}
+
+.nav-center{
+    flex:1;
+    justify-content:center;
+    display:flex;
+}
+
+.nav-right{
+    flex:1;
+    justify-content: flex-end;
+    display:flex;
+}
+
+.nav-right li a{
+    font-size: 24px;
+}
+
+/*Product page*/
+
+.product-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.product-image img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+    border-style: solid;
+}
+
+.product-details {
+    margin-left: 40px;
+    flex: 1;
+}
+
+.product-details h3.brand {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.product-details h1.product-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.product-details p.description {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.product-details p.price {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.cart-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.add-to-cart {
+    background: #F3C9B2;
+    color: white;
+    border: none;
+    padding: 12px 24px; /* Smaller padding */
+    cursor: pointer;
+    border-radius: 100px;
+    font-size: 16px; /* Smaller font size */
+}
+
+.heart-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #ff6b6b;
+}
+
+/*Footer*/
+
+footer {
+    display:flex;
+    justify-content: space-between;
+    text-align: center;
+    padding: 25px;
+    position:relative;
+    bottom:0;
+}
+
+footer p{
+    font-weight: bold;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Secret</title>
+    <link rel="stylesheet" href="/homepage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/fdc29e935d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <h1 class="company-name">Aura Secret</h1>
+            <nav>
+                <ul class="nav-center">
+                    <li><a href="#">Magazine</a></li>
+                    <li><a href="#">Noutăți</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <ul class="nav-right">
+                    <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                    <li class="user-menu">
+                        <a th:if="${utilizator.email!='user'}" href="#"><i class="fa-solid fa-circle-user"></i></a>
+                        <ul th:if="${utilizator.email!='user'}" class="dropdown">
+                            <li><a href="#">Orders</a></li>
+                            <li><a href="#">Favorites</a></li>
+                            <li><a href="#">Log Out</a></li>
+                        </ul>
+                        <a th:unless="${utilizator.email!='user'}" href="#"><i class="fa-solid fa-circle-user"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <img src="/girl.png" alt="Smiling woman with skincare product">
+            <div class="hero-text">
+                <h2>Treat yourself with a better skin</h2>
+                <p>Lorem ipsum dolor sit amet consectetur. In sed diam nisl faucibus lacus cras nibh eu. Nunc aliquam tortor posuere aenean quam aliquam ultricies. Eleifend tincidunt varius nisi varius quis egestas nunc curabitur.</p>
+                <button class="button">Vezi Produsele</button>
+            </div>
+        </section>
+        
+        <section class="products">
+            <h2>Cosmetics for your face</h2>
+            <div class="product-list">
+	                <div class="product" th:each="produs : ${Produse}">
+	                    <img th:src="@{${produs.img}}" alt="Facial Cream">
+	                    <div class="product-info">
+	                        <p class="product-name" th:text="${produs.nume}"></p>
+	                        <p class="product-price" th:text="${produs.pret}">lei</p>
+	                    </div>
+                	</div>
+            </div>
+            <div class="button-container">
+                <button class="button">See All Products</button>
+                <div class="arrows">
+                    <i class="fas fa-arrow-left arrow"></i>
+                    <i class="fas fa-arrow-right arrow"></i>
+                </div>
+            </div>
+        </section>
+        <section class="subscribe">
+            <h2>Subscribe to our newsletter to get a 10% off your first purchase</h2>
+            <input type="email" placeholder="Enter your email">
+            <button class="button">Subscribe</button>
+        </section>
+</main>
+<footer>
+        <p>Aura Secret</p>
+        <div class="footer-terms">
+        <p>Aura Secret &copy; 2023</p>
+        <p>Terms and Conditions</p>
+        </div>
+        <p>(305) 555-0123</p>
+    </footer>
+</body>
+</html>
