@@ -26,9 +26,9 @@
                         <ul th:if="${utilizator.email!='user'}" class="dropdown">
                             <li><a href="#">Orders</a></li>
                             <li><a href="#">Favorites</a></li>
-                            <li><a href="#">Log Out</a></li>
+                            <li><a href="/logOut">Log Out</a></li>
                         </ul>
-                        <a th:unless="${utilizator.email!='user'}" href="#"><i class="fa-solid fa-circle-user"></i></a>
+                        <a th:unless="${utilizator.email!='user'}" href="/signin"><i class="fa-solid fa-circle-user"></i></a>
                     </li>
                 </ul>
             </nav>

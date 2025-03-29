@@ -21,7 +21,7 @@ public class Store_Controlar {
 	@Autowired
 	UtilizatorService utilizatorService;
 	
-	@GetMapping("/home")
+	@GetMapping("/")
 	public String homepage(Model model) {
 		if(q==false) {
 			productService.addProduct(new Produs("Crema de fata",15,16,"/produs.png"));

@@ -33,7 +33,7 @@ public class UtilizatorService {
 		return utilizatorRepository.findByEmailAndParola(email, parola);
 	}
 	
-	public Persoane verificareNume(String email) {
+	public Persoane verificareEmail(String email) {
 		return utilizatorRepository.findByEmail(email);
 	}
 }

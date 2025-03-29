@@ -9,7 +9,7 @@ body {
 }
 .left-section {
     flex: 1;
-    background: url('img/signInImg.jpg') no-repeat center center/cover;
+    background: url('signInImg.jpg') no-repeat center center/cover;
     color: black;
     display: flex;
     flex-direction: column;
