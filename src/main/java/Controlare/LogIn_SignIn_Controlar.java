@@ -34,8 +34,7 @@ public class LogIn_SignIn_Controlar {
 		String password = utilizator.getParola();
 		
 		if(utilizatorService.LogIn(email, password)!=null) {
-			account = new Persoane(email,password);
-			account.setId(utilizatorService.getUtilizatorRepository().findByEmailAndParola(email, password).getId());
+			account = utilizatorService.getUtilizatorRepository().findByEmailAndParola(email, password);
 			return "redirect:/";
 		}
 		invalid=true;

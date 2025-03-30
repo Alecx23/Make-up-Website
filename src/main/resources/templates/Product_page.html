@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product page</title>
-    <link rel="stylesheet" href="Product page.css">
+    <title th:text="${produs.nume}"></title>
+    <link rel="stylesheet" href="/Product page.css">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/fdc29e935d.js" crossorigin="anonymous"></script>
 </head>
@@ -12,7 +12,7 @@
 
     <header>
         <div class="nav-container">
-            <h1 class="company-name">Aura Secret</h1>
+        	<a href="/" class="company-name">Aura Secret</a>
             <nav>
                 <ul class="nav-center">
                     <li><a href="#">Magazine</a></li>
@@ -22,7 +22,15 @@
                 <ul class="nav-right">
                     <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                     <li><a href="#"><i class="fa-solid fa-bag-shopping"></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-circle-user"></i></a></li>
+                    <li class="user-menu">
+                        <a th:if="${utilizator.email!='user'}" href="#"><i class="fa-solid fa-circle-user"></i></a>
+                        <ul th:if="${utilizator.email!='user'}" class="dropdown">
+                            <li><a href="#">Orders</a></li>
+                            <li><a href="#">Favorites</a></li>
+                            <li><a href="/logOut">Log Out</a></li>
+                        </ul>
+                        <a th:unless="${utilizator.email!='user'}" href="/signin"><i class="fa-solid fa-circle-user"></i></a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -31,13 +39,13 @@
     <main>
         <section class="product-container">
             <div class="product-image">
-                <img src="img/produs.png" alt="My Way Ylang - Apa de parfum">
+                <img th:src="${produs.img}" alt="Product image">
             </div>
             <div class="product-details">
                 <h3 class="brand">Armani</h3>
-                <h1 class="product-title">My Way Ylang - Apa de parfum</h1>
-                <p class="description">Descoperă My Way Eau de Parfum Ylang, o nouă interpretare radiantă, floral-fructată, a parfumului...</p>
-                <p class="price"><strong>650,00 Lei</strong></p>
+                <h1 class="product-title" th:text="${produs.nume}"></h1>
+                <p class="description" th:text="${produs.desc}"></p>
+                <p class="price" th:text="${produs.pret}+' Lei'"><strong></strong></p>
                 <div class="cart-container">
                     <button class="add-to-cart">Adaugă în coș</button>
                     <button class="heart-icon"><i class="fa-regular fa-heart"></i></button>

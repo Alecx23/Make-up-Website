@@ -49,7 +49,7 @@
             <h2>Cosmetics for your face</h2>
             <div class="product-list">
 	                <div class="product" th:each="produs : ${Produse}">
-	                    <img th:src="@{${produs.img}}" alt="Facial Cream">
+	                	<a th:href="@{/product/{id}(id=${produs.id})}"><img th:src="@{${produs.img}}" alt="Facial Cream"> </a>
 	                    <div class="product-info">
 	                        <p class="product-name" th:text="${produs.nume}"></p>
 	                        <p class="product-price" th:text="${produs.pret}">lei</p>
