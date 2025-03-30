@@ -48,7 +48,25 @@
                 <p class="price" th:text="${produs.pret}+' Lei'"><strong></strong></p>
                 <div class="cart-container">
                     <button class="add-to-cart">Adaugă în coș</button>
-                    <button class="heart-icon"><i class="fa-regular fa-heart"></i></button>
+                    
+                    <div th:if="${estePreferat}">
+                    	<form th:action="@{/preferate/remove}" method="post">
+                    		<input type="hidden" th:value="${produs.id}" name="productId"/>
+                    		<button class="heart-icon" type="submit">
+                    			<i class="fa-solid fa-heart"></i>
+                    		</button>
+                    	</form>
+                    </div>
+                    
+                    <div th:unless="${estePreferat}">
+                    	<form th:action="@{/preferate/add}" method="post">
+                    		<input type="hidden" th:value="${produs.id}" name="productId"/>
+                    		<button class="heart-icon" type="submit">
+                    			<i class="fa-regular fa-heart"></i>
+                    		</button> 
+                    	</form>
+                    </div>
+                    
                 </div>
                 
             </div>
