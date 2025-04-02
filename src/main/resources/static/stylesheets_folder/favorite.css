@@ -2,11 +2,6 @@
     margin-left: 40px;
 }
 
-a{
-	text-decoration:none;
-	color:black;
-}
-
 .products {
 	margin: auto;
     display: grid;
@@ -49,7 +44,7 @@ a{
     font-weight: bold;
 }
 
-.heart-icon {
+.icon {
     background: none;
     border: none;
     cursor: pointer;

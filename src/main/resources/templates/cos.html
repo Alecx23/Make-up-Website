@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Favorite</title>
+    <title>Aura Secret</title>
     <link rel="stylesheet" href="/stylesheets_folder/favorite.css">
     <link rel="stylesheet" href="/stylesheets_folder/header_footer.css">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/fdc29e935d.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
     <header>
         <div class="nav-container">
             <a href="/" class="company-name">Aura Secret</a>
@@ -22,12 +21,12 @@
                 </ul>
                 <ul class="nav-right">
                     <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-                    <li><a href="/Cos"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-bag-shopping"></i></a></li>
                     <li class="user-menu">
                         <a th:if="${utilizator.email!='user'}" href="#"><i class="fa-solid fa-circle-user"></i></a>
                         <ul th:if="${utilizator.email!='user'}" class="dropdown">
                             <li><a href="#">Orders</a></li>
-                            <li><a href="#">Favorites</a></li>
+                            <li><a href="/preferate">Favorites</a></li>
                             <li><a href="/logOut">Log Out</a></li>
                         </ul>
                         <a th:unless="${utilizator.email!='user'}" href="/signin"><i class="fa-solid fa-circle-user"></i></a>
@@ -38,33 +37,31 @@
     </header>
 
     <main>
-            <h1 class="text">Produse favorite</h1>
-            <section class="products">
-                <div class="product-list" th:each="produs: ${Preferate}">
-                    <div class="product">
-                    <a th:href="@{/product/{id}(id=${produs.id})}"><img th:src="@{${produs.img}}" alt="an image"> </a>
-                        <div class="product-info">
-                            <p class="product-name" th:text="${produs.nume}"></p>
-                            <p class="product-price" th:text="${produs.pret}"></p>
-                            <form th:action="@{/preferate/remove}" method="post">
-	                    		<input type="hidden" th:value="${produs.id}" name="productId"/>
-	                    		<button class="icon" type="submit">
-	                    			<i class="fa-solid fa-heart"></i>
-	                    		</button>
-                    		</form>
-                        </div>
+        <h1 class="text" th:text="${titlu}"></h1>
+        <section class="products" >
+        	<div class="products-list" th:each="produs: ${ProduseCos}">
+        		<div class="product">
+                    <a th:href="@{/product/{id}(id=${produs.key.id})}"><img th:src="@{${produs.key.img}}" alt="an image"> </a>
+                    <div class="product-info">
+                        <p class="product-name" th:text="${produs.key.nume}"></p>
+                        <p class="product-price" th:text="${produs.key.pret}+' lei x '+${produs.value}"></p>
+                        <form th:action="@{/removeCos}" method="post">
+                        	<input type="hidden" th:value="${produs.key.id}" name="produsId">
+                        	<button class="icon" type="submit"><i class="fa-solid fa-trash"></i></button>
+                        </form>
                     </div>
                 </div>
+        	</div>
         </section>
-    </main>
-    
-    <footer>
-        <p>Aura Secret</p>
-        <div class="footer-terms">
-        <p>Aura Secret &copy; 2023</p>
-        <p>Terms and Conditions</p>
-        </div>
-        <p>(305) 555-0123</p>
-    </footer>
+</main>
+
+<footer>
+    <p>Aura Secret</p>
+    <div class="footer-terms">
+    <p>Aura Secret &copy; 2023</p>
+    <p>Terms and Conditions</p>
+    </div>
+    <p>(305) 555-0123</p>
+</footer>
 </body>
 </html>

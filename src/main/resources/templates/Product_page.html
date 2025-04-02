@@ -22,7 +22,7 @@
                 </ul>
                 <ul class="nav-right">
                     <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                    <li><a href="/Cos"><i class="fa-solid fa-bag-shopping"></i></a></li>
                     <li class="user-menu">
                         <a th:if="${utilizator.email!='user'}" href="#"><i class="fa-solid fa-circle-user"></i></a>
                         <ul th:if="${utilizator.email!='user'}" class="dropdown">
@@ -48,7 +48,18 @@
                 <p class="description" th:text="${produs.desc}"></p>
                 <p class="price" th:text="${produs.pret} + ' Lei'"><strong></strong></p>
                 <div class="cart-container">
-                    <button class="add-to-cart">Adaugă în coș</button>
+                	
+                	<div th:if="${produs.stoc>0&&produs.stoc>cantitate}">
+                		<form th:action="@{/addCos}" method="post">
+                			<input type="hidden" th:value="${produs.id}" name="produsId">
+                			<button class="add-to-cart" type="submit">Adaugă în coș</button>
+                		</form>
+                	</div>
+                	
+                	<div th:unless="${produs.stoc>0&&produs.stoc>cantitate}">
+                		<p> Acest produs nu mai este in stoc </p>
+                	</div>
+                    
                     
                     <div th:if="${estePreferat}">
                     	<form th:action="@{/preferate/remove}" method="post">

@@ -64,4 +64,13 @@ public class Cos {
 				cos.remove(p);
 		}
     }
+	
+	public Integer totalProdCos() {
+		Integer nr=0;
+		for(Produs e: cos.keySet()) {
+			if(cos.get(e)!=0)
+				nr=nr+cos.get(e);
+		}
+		return nr;
+	}
 }

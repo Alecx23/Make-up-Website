@@ -45,6 +45,7 @@ public class Produse_Controlar {
 		model.addAttribute("produs", produs);
 		model.addAttribute("estePreferat",estePreferat);
 		model.addAttribute("utilizator", utilizator);
+		model.addAttribute("cantitate", utilizator.getCos().getCos().get(produs));
 		
 		return "Product_page";
 	}

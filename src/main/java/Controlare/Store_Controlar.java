@@ -25,8 +25,8 @@ public class Store_Controlar {
 	public String homepage(Model model) {
 		if(q==false) {
 			productService.addProduct(new Produs("Crema de fata",15,16,"/imagini/produs.png"));
-			productService.addProduct(new Produs("Crema de fata",15,16,"/imagini/produs.png"));
-			productService.addProduct(new Produs("Crema de fata",15,16,"/imagini/produs.png"));
+			productService.addProduct(new Produs("Crema de fata",15,0,"/imagini/produs.png"));
+			productService.addProduct(new Produs("Crema de fata",15,3,"/imagini/produs.png"));
 			utilizatorService.addUtilizator(new Persoane("admin","admin"));
 			utilizatorService.addUtilizator(new Persoane("user","user"));
 			LogIn_SignIn_Controlar.account.setId(utilizatorService.getUtilizatorRepository().findByEmail("user").getId());
