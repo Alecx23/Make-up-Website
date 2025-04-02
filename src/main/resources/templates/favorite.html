@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="${produs.nume}"></title>
-    <link rel="stylesheet" href="/stylesheets_folder/Product page.css">
+    <title>Favorite</title>
+    <link rel="stylesheet" href="/stylesheets_folder/favorite.css">
     <link rel="stylesheet" href="/stylesheets_folder/header_footer.css">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/fdc29e935d.js" crossorigin="anonymous"></script>
@@ -13,7 +13,7 @@
 
     <header>
         <div class="nav-container">
-        	<a href="/" class="company-name">Aura Secret</a>
+            <a href="/" class="company-name">Aura Secret</a>
             <nav>
                 <ul class="nav-center">
                     <li><a href="#">Magazine</a></li>
@@ -27,7 +27,7 @@
                         <a th:if="${utilizator.email!='user'}" href="#"><i class="fa-solid fa-circle-user"></i></a>
                         <ul th:if="${utilizator.email!='user'}" class="dropdown">
                             <li><a href="#">Orders</a></li>
-                            <li><a href="/preferate">Favorites</a></li>
+                            <li><a href="#">Favorites</a></li>
                             <li><a href="/logOut">Log Out</a></li>
                         </ul>
                         <a th:unless="${utilizator.email!='user'}" href="/signin"><i class="fa-solid fa-circle-user"></i></a>
@@ -38,39 +38,23 @@
     </header>
 
     <main>
-        <section class="product-container">
-            <div class="product-image">
-                <img th:src="${produs.img}" alt="Product image">
-            </div>
-            <div class="product-details">
-                <h3 class="brand">Armani</h3>
-                <h1 class="product-title" th:text="${produs.nume}"></h1>
-                <p class="description" th:text="${produs.desc}"></p>
-                <p class="price" th:text="${produs.pret} + ' Lei'"><strong></strong></p>
-                <div class="cart-container">
-                    <button class="add-to-cart">Adaugă în coș</button>
-                    
-                    <div th:if="${estePreferat}">
-                    	<form th:action="@{/preferate/remove}" method="post">
-                    		<input type="hidden" th:value="${produs.id}" name="productId"/>
-                    		<button class="heart-icon" type="submit">
-                    			<i class="fa-solid fa-heart"></i>
-                    		</button>
-                    	</form>
+            <h1 class="text">Produse favorite</h1>
+            <section class="products">
+                <div class="product-list" th:each="produs: ${Preferate}">
+                    <div class="product">
+                    <a th:href="@{/product/{id}(id=${produs.id})}"><img th:src="@{${produs.img}}" alt="an image"> </a>
+                        <div class="product-info">
+                            <p class="product-name" th:text="${produs.nume}"></p>
+                            <p class="product-price" th:text="${produs.pret}"></p>
+                            <form th:action="@{/preferate/remove}" method="post">
+	                    		<input type="hidden" th:value="${produs.id}" name="productId"/>
+	                    		<button class="heart-icon" type="submit">
+	                    			<i class="fa-solid fa-heart"></i>
+	                    		</button>
+                    		</form>
+                        </div>
                     </div>
-                    
-                    <div th:unless="${estePreferat}">
-                    	<form th:action="@{/preferate/add}" method="post">
-                    		<input type="hidden" th:value="${produs.id}" name="productId"/>
-                    		<button class="heart-icon" type="submit">
-                    			<i class="fa-regular fa-heart"></i>
-                    		</button> 
-                    	</form>
-                    </div>
-                    
                 </div>
-                
-            </div>
         </section>
     </main>
     

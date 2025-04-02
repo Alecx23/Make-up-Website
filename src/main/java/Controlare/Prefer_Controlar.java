@@ -2,6 +2,8 @@ package Controlare;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -62,5 +64,15 @@ public class Prefer_Controlar {
 		}
 		
 		return "redirect:/product/" +productId.toString();
+	}
+	
+	@GetMapping("/preferate")
+	public String preferate(Model model) {
+		
+		Persoane utilizator = utilizatorService.getUtilizatorRepository().findById(LogIn_SignIn_Controlar.account.getId()).orElse(null);
+		Preferate utilPref = utilizator.getPref();
+		model.addAttribute("Preferate",utilPref.getProdus());
+		model.addAttribute("utilizator",utilizator);
+		return "favorite";
 	}
 }

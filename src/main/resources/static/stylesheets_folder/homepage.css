@@ -1,19 +1,3 @@
-html,body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    color: #333;
-}
-
-header {
-    padding: 26px;
-    text-align: center;
-    margin-bottom:80px;
-}
-
 button{
     padding: 16px 38px;
     cursor: pointer;
@@ -24,99 +8,6 @@ button{
     background: #ff6b6b;
     color:white;
     border: none;
-}
-
-/*navigation bar*/
-
-.nav-container{
-    display:flex;
-    justify-content: space-between;
-    align-items:center;
-}
-
-.company-name{
-    margin:0;
-    font-size: 24px;
-    flex:1;
-    text-align: left;
-    font-weight: bold;
-}
-
-nav{
-    display: flex;
-    flex:2;
-    justify-content: space-between;
-    align-items: center;
-}
-
-nav ul{
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding:0;
-    gap: 32px;
-}
-
-nav ul li a{
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-}
-nav ul li a:hover{
-    color:#ff6b6b;
-}
-
-.nav-center{
-    flex:1;
-    justify-content:center;
-    display:flex;
-}
-
-.nav-right{
-    flex:1;
-    justify-content: flex-end;
-    display:flex;
-}
-
-.nav-right li a{
-    font-size: 24px;
-}
-
-.user-menu {
-    position: relative;
-}
-
-.user-menu .dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: white;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: none;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    min-width: 150px;
-}
-
-.user-menu .dropdown li {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-.user-menu .dropdown li a {
-    text-decoration: none;
-    color: black;
-    display: block;
-}
-
-.user-menu .dropdown li:hover {
-    background: #f5f5f5;
-}
-
-.user-menu:hover .dropdown {
-    display: block;
 }
 
 /*introduction-page*/
@@ -169,7 +60,6 @@ nav ul li a:hover{
 
 .products {
     height: 650px;
-    justify-content: center;
     text-align: center;
     padding: 40px 20px;
     background: #FDF8F6;
@@ -219,13 +109,8 @@ nav ul li a:hover{
 }
 
 .button-container{
-    position : absolute;
-    bottom: -700px;
-    left: 250px;
-    right:250px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    position: relative; 
+    bottom: -100px;
 }
 
 .button-container button{
@@ -233,17 +118,6 @@ nav ul li a:hover{
     color: black;
     font-weight: bold;
     border: 2px solid black;
-}
-
-.arrow{
-    font-size: 24px;
-    color: black;
-    cursor:pointer;
-    margin:0 10px;
-}
-
-.arrow:hover{
-    color:firebrick
 }
 
 /*subscribe-section*/
@@ -282,17 +156,4 @@ nav ul li a:hover{
     color: black;
     border:2px solid black;
     border-radius:100px;
-}
-
-/*footer*/
-
-footer {
-    display:flex;
-    justify-content: space-between;
-    text-align: center;
-    padding: 25px;
-}
-
-footer p{
-    font-weight: bold;
 }

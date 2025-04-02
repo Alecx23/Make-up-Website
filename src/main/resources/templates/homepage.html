@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aura Secret</title>
-    <link rel="stylesheet" href="/homepage.css">
+    <link rel="stylesheet" href="/stylesheets_folder/homepage.css">
+    <link rel="stylesheet" href="/stylesheets_folder/header_footer.css">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/fdc29e935d.js" crossorigin="anonymous"></script>
 </head>
@@ -25,7 +26,7 @@
                         <a th:if="${utilizator.email!='user'}" href="#"><i class="fa-solid fa-circle-user"></i></a>
                         <ul th:if="${utilizator.email!='user'}" class="dropdown">
                             <li><a href="#">Orders</a></li>
-                            <li><a href="#">Favorites</a></li>
+                            <li><a href="/preferate">Favorites</a></li>
                             <li><a href="/logOut">Log Out</a></li>
                         </ul>
                         <a th:unless="${utilizator.email!='user'}" href="/signin"><i class="fa-solid fa-circle-user"></i></a>
@@ -37,7 +38,7 @@
     
     <main>
         <section class="hero">
-            <img src="/girl.png" alt="Smiling woman with skincare product">
+            <img src="/imagini/girl.png" alt="Smiling woman with skincare product">
             <div class="hero-text">
                 <h2>Treat yourself with a better skin</h2>
                 <p>Lorem ipsum dolor sit amet consectetur. In sed diam nisl faucibus lacus cras nibh eu. Nunc aliquam tortor posuere aenean quam aliquam ultricies. Eleifend tincidunt varius nisi varius quis egestas nunc curabitur.</p>
@@ -52,24 +53,23 @@
 	                	<a th:href="@{/product/{id}(id=${produs.id})}"><img th:src="@{${produs.img}}" alt="Facial Cream"> </a>
 	                    <div class="product-info">
 	                        <p class="product-name" th:text="${produs.nume}"></p>
-	                        <p class="product-price" th:text="${produs.pret}">lei</p>
+	                        <p class="product-price" th:text="${produs.pret} + ' Lei'"></p>
 	                    </div>
                 	</div>
             </div>
             <div class="button-container">
                 <button class="button">See All Products</button>
-                <div class="arrows">
-                    <i class="fas fa-arrow-left arrow"></i>
-                    <i class="fas fa-arrow-right arrow"></i>
-                </div>
             </div>
         </section>
+        
         <section class="subscribe">
             <h2>Subscribe to our newsletter to get a 10% off your first purchase</h2>
             <input type="email" placeholder="Enter your email">
             <button class="button">Subscribe</button>
         </section>
+        
 </main>
+
 <footer>
         <p>Aura Secret</p>
         <div class="footer-terms">
@@ -78,5 +78,6 @@
         </div>
         <p>(305) 555-0123</p>
     </footer>
+    
 </body>
 </html>
