@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Secret</title>
+    <link rel="stylesheet" href="/stylesheets_folder/comanda.css">
+    <link rel="stylesheet" href="/stylesheets_folder/header_footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1 class="company-name">Aura Secret</h1>
+    </header>
+    <main> 
+        <section class="wrapper">
+        <div class="formular">
+            <h2 class="title">Livrare standard la domiciliu</h2>
+            <form th:action="@{/buyComanda}" th:object="${form}" method="post">
+                <div class="row">
+                    <div class="form-group">
+                        <label for="prenume">Prenume</label>
+                        <input type="text" placeholder="ex:Maria" th:field="*{prenume}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nume">Nume</label>
+                        <input type="text" placeholder="ex:Castana" th:field="*{nume}" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" placeholder="ex:mariacastana@gmail.com" th:field="*{email}" required>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Număr de telefon</label>
+                    <input type="tel" placeholder="+40" th:field="*{phoneNumber}" required>
+                </div>
+                <div class="form-group">
+                    <label for="adresa">Adresă</label>
+                    <input type="text" placeholder="Strada, numărul, scara, apartamentul (opțional)" th:field="*{adresa}" required>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <input type="text" placeholder="Cod poștal" th:field="*{codPostal}" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Oraș" th:field="*{oras}" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <select th:field="*{provincie}" >
+                        <option value="" disabled selected>Provincia</option >
+                        <option value="Constanta">Constanta</option>
+                    </select>
+                </div>
+                <div class="buttons">
+                    <a href="/Cos" class="inapoi"><p>Inapoi la Cos</p></a>
+                    <button class="continue-button" type="submit">CONTINUARE</button>
+                </div>
+                
+            </form>
+        </div>
+        <div class="summary" >
+            <h3>Rezumatul cumpărăturilor</h3>
+            <div class="product-list" th:each="produs: ${Comanda}" >
+	            <div class="product">
+	                <a th:href="@{/product/{id}(id=${produs.key.id})}"><img th:src="@{${produs.key.img}}" alt="an image"> </a>
+	                <div>
+	                    <p th:text="${produs.key.nume}"></p>
+	                    <p th:text="${produs.key.pret} + ' Lei x '+${produs.value} "><strong></strong></p>
+	                </div>
+	            </div>
+            </div>
+            <hr>
+            <p class="total" th:text="${PretT} + ' Lei'"><strong></strong></p>
+        </div>
+    </section>
+    </main>
+    
+
+    <footer>
+        <p>Aura Secret</p>
+        <div class="footer-terms">
+        <p>Aura Secret &copy; 2023</p>
+        <p>Terms and Conditions</p>
+        </div>
+        <p>(305) 555-0123</p>
+    </footer>
+
+</body>
+</html>

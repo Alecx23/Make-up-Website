@@ -53,6 +53,13 @@
                 </div>
         	</div>
         </section>
+        <div th:unless="${ProduseCos.isEmpty}" >
+        	<form th:action="@{/Comanda}" method="post">
+        		<input type="hidden" th:value="${CosId}" name="CosId"/>
+        		<button type="submit" class="Buy">Buy</button>
+        	</form>
+        </div>
+        
 </main>
 
 <footer>

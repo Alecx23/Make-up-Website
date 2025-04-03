@@ -32,18 +32,23 @@ public class Comanda {
 	private Map<Produs, Integer> comanda = new HashMap<>();
 	
 	private Integer pretT;
-	private String adress;
-	private String numarDeTf;
+	private String adresa,numarDeTf,email,codPostal,oras,provincie,nume, prenume;
 	
 	public Comanda() {
 		
 	}
 	
 	
-	public Comanda(String adress, String numar) {
-		super();
-		this.adress = adress;
-		this.numarDeTf = numar;
+	public void puneDate(String adresa, String numarDeTf, String email, String codPostal, String oras,
+			String provincie, String nume, String prenume) {
+		this.adresa = adresa;
+		this.numarDeTf=numarDeTf;
+		this.email=email;
+		this.codPostal=codPostal;
+		this.oras = oras;
+		this.provincie = provincie;
+		this.nume=nume;
+		this.prenume=prenume;
 	}
 
 	public void calculeazaPretT() {
@@ -93,13 +98,13 @@ public class Comanda {
 	}
 
 
-	public String getAdress() {
-		return adress;
+	public String getAdresa() {
+		return adresa;
 	}
 
 
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAdresa(String adresa) {
+		this.adresa = adresa;
 	}
 
 
@@ -110,6 +115,66 @@ public class Comanda {
 
 	public void setNumarDeTf(String numarDeTf) {
 		this.numarDeTf = numarDeTf;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getCodPostal() {
+		return codPostal;
+	}
+
+
+	public void setCodPostal(String codPostal) {
+		this.codPostal = codPostal;
+	}
+
+
+	public String getOras() {
+		return oras;
+	}
+
+
+	public void setOras(String oras) {
+		this.oras = oras;
+	}
+
+
+	public String getProvincie() {
+		return provincie;
+	}
+
+
+	public void setProvincie(String provincie) {
+		this.provincie = provincie;
+	}
+
+
+	public String getNume() {
+		return nume;
+	}
+
+
+	public void setNume(String nume) {
+		this.nume = nume;
+	}
+
+
+	public String getPrenume() {
+		return prenume;
+	}
+
+
+	public void setPrenume(String prenume) {
+		this.prenume = prenume;
 	}
 	
 	

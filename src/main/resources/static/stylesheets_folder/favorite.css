@@ -51,3 +51,13 @@
     font-size: 18px;
     color: #e60023;
 }
+
+.Buy {
+    display: block;
+    margin: 30px auto;
+    padding: 16px 38px;
+    cursor: pointer;
+    border-radius: 100px;
+    background: black;
+    color:white;
+}
