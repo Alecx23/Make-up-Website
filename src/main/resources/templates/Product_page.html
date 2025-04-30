@@ -21,7 +21,7 @@
                     <li class="user-menu">
                         <a th:if="${utilizator.nume!='user'}" href="#"><i class="fa-solid fa-circle-user"></i></a>
                         <ul th:if="${utilizator.nume!='user'}" class="dropdown">
-                            <li><a href="#">Orders</a></li>
+                            <li><a href="/Comenzi">Orders</a></li>
                             <li><a href="/preferate">Favorites</a></li>
                             <li><a href="/logOut">Log Out</a></li>
                         </ul>
