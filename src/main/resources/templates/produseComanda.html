@@ -16,11 +16,11 @@
             <nav>
                 <ul class="nav-right">
                     <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                    <li><a href="/Cos"><i class="fa-solid fa-bag-shopping"></i></a></li>
                     <li class="user-menu">
                         <a th:if="${utilizator.nume!='user'}" href="#"><i class="fa-solid fa-circle-user"></i></a>
                         <ul th:if="${utilizator.nume!='user'}" class="dropdown">
-                            <li><a href="#">Orders</a></li>
+                            <li><a href="/Comenzi">Orders</a></li>
                             <li><a href="/preferate">Favorites</a></li>
                             <li><a href="/logOut">Log Out</a></li>
                         </ul>
@@ -32,29 +32,19 @@
     </header>
 
     <main>
-        <h1 class="text" th:text="${titlu}"></h1>
-        <section class="products" >
-        	<div class="products-list" th:each="produs: ${ProduseCos}">
-        		<div class="product">
-                    <a th:href="@{/product/{id}(id=${produs.key.id})}"><img th:src="@{${produs.key.img}}" alt="an image"> </a>
+        <h1 class="text" th:text="'Comanda nr. ' + ${idComanda}"></h1>
+        <h2 class="pret" th:text="'Total pret: ' + ${pretTotal} + ' Lei'"></h2>
+        <section class="products">
+        	<div class="product-list" th:each="produs :${produseComanda}">
+                <div class="product">
+                	<a th:href="@{/product/{id}(id=${produs.key.id})}"><img th:src="@{${produs.key.img}}" alt="an image"> </a>
                     <div class="product-info">
                         <p class="product-name" th:text="${produs.key.nume}"></p>
-                        <p class="product-price" th:text="${produs.key.pret}+' lei x '+${produs.value}"></p>
-                        <form th:action="@{/removeCos}" method="post">
-                        	<input type="hidden" th:value="${produs.key.id}" name="produsId">
-                        	<button class="icon" type="submit"><i class="fa-solid fa-trash"></i></button>
-                        </form>
+                        <p class="product-price" th:text="${produs.key.pret} + ' lei x ' +${produs.value}"></p>
                     </div>
                 </div>
-        	</div>
+            </div>  
         </section>
-        <div th:unless="${ProduseCos.isEmpty}" >
-        	<form th:action="@{/Comanda}" method="post">
-        		<input type="hidden" th:value="${CosId}" name="CosId"/>
-        		<button type="submit" class="Buy">Buy</button>
-        	</form>
-        </div>
-        
 </main>
 
 <footer>

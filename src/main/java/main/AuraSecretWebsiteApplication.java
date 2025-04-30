@@ -1,4 +1,4 @@
-package principal;
+package main;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,9 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EntityScan(basePackages = "Obiecte")
+@EntityScan(basePackages = "obiecte")
 @EnableJpaRepositories(basePackages = "Repositories")
-@ComponentScan(basePackages = {"principal","Services","Repositories","Controlare"})
+@ComponentScan(basePackages = {"main","Services","Repositories","Controlare"})
 public class AuraSecretWebsiteApplication {
 
 	public static void main(String[] args) {

@@ -18,7 +18,7 @@ public class ComandaService {
 		comandaRepository.save(comanda);
 	}
 	
-	public void removeComanda(Comanda comanda) {
-		comandaRepository.delete(comanda);
+	public ComandaRepository getComandaRepository() {
+		return comandaRepository;
 	}
 }

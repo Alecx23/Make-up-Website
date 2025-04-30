@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import Services.PreferateService;
-import Services.ProductService;
-import Services.UtilizatorService;
-import obiecte.Persoane;
+import Services.ProduseService;
+import Services.PersoanaService;
+import obiecte.Persoana;
 import obiecte.Preferate;
 import obiecte.Produs;
 
@@ -21,26 +21,26 @@ public class Prefer_Controlar {
 	PreferateService preferateService;
 	
 	@Autowired
-	UtilizatorService utilizatorService;
+	PersoanaService persoaneService;
 	
 	@Autowired
-	ProductService productService;
+	ProduseService produseService;
 	
 	@PostMapping("/preferate/add")
-	public String adaugaToPreferate(@RequestParam Long productId) {
+	public String adaugaPreferate(@RequestParam Long productId) {
 		
-		Produs produs = productService.getProductRepository().findById(productId).orElse(null);
-		Persoane utilizator = utilizatorService.getUtilizatorRepository().
-				findById(LogIn_SignIn_Controlar.account.getId()).orElse(null);
+		Produs produs = produseService.getProduseRepository().findById(productId).orElse(null);
+		Persoana persoana = persoaneService.getPersoaneRepository().
+				findById(LogIn_SignIn_Controlar.cont.getId()).orElse(null);
 		
-		if(utilizator==null || produs==null)
+		if(persoana==null || produs==null)
 			return "redirect:/";
 		
-		Preferate utilPref = utilizator.getPref();
+		Preferate persPref = persoana.getPref();
 		
-		if(!utilPref.getProdus().contains(produs)) {
-			utilPref.getProdus().add(produs);
-			preferateService.addPreferate(utilPref);
+		if(!persPref.getProdus().contains(produs)) {
+			persPref.getProdus().add(produs);
+			preferateService.addPreferate(persPref);
 		}
 		
 		return "redirect:/product/" +productId.toString();
@@ -49,18 +49,18 @@ public class Prefer_Controlar {
 	@PostMapping("/preferate/remove")
 	public String scoatePref(@RequestParam Long productId) {
 		
-		Produs produs = productService.getProductRepository().findById(productId).orElse(null);
-		Persoane utilizator = utilizatorService.getUtilizatorRepository().
-				findById(LogIn_SignIn_Controlar.account.getId()).orElse(null);
+		Produs produs = produseService.getProduseRepository().findById(productId).orElse(null);
+		Persoana persoana = persoaneService.getPersoaneRepository().
+				findById(LogIn_SignIn_Controlar.cont.getId()).orElse(null);
 		
-		if(utilizator==null || produs==null)
+		if(persoana==null || produs==null)
 			return "redirect:/";
 		
-		Preferate utilPref = utilizator.getPref();
+		Preferate persPref = persoana.getPref();
 		
-		if(utilPref.getProdus().contains(produs)) {
-			utilPref.getProdus().remove(produs);
-			preferateService.addPreferate(utilPref);
+		if(persPref.getProdus().contains(produs)) {
+			persPref.getProdus().remove(produs);
+			preferateService.addPreferate(persPref);
 		}
 		
 		return "redirect:/product/" +productId.toString();
@@ -69,10 +69,10 @@ public class Prefer_Controlar {
 	@GetMapping("/preferate")
 	public String preferate(Model model) {
 		
-		Persoane utilizator = utilizatorService.getUtilizatorRepository().findById(LogIn_SignIn_Controlar.account.getId()).orElse(null);
-		Preferate utilPref = utilizator.getPref();
-		model.addAttribute("Preferate",utilPref.getProdus());
-		model.addAttribute("utilizator",utilizator);
+		Persoana persoana = persoaneService.getPersoaneRepository().findById(LogIn_SignIn_Controlar.cont.getId()).orElse(null);
+		Preferate persPref = persoana.getPref();
+		model.addAttribute("Preferate",persPref.getProdus());
+		model.addAttribute("utilizator",persoana);
 		return "favorite";
 	}
 }

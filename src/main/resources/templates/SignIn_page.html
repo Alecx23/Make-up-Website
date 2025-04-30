@@ -17,11 +17,11 @@
             <h2>Create an account</h2>
             <p>Already have an account? <a href="/login">Log In</a></p>
             <form th:action="@{/signin}" th:object="${utilizator}" method="post">
-	            <input type="text" th:field="*{email}" placeholder="Email" required>
+	            <input type="text" th:field="*{nume}" placeholder="Nume" required>
 	            <input type="password" th:field="*{parola}" placeholder="Password" required>
 	            <button type="submit">Next</button>
         	</form>
-        	<p th:if="${invalidEmail}" class="error" style="color: red;">This username is already taken</p>
+        	<p th:if="${invalidNume}" class="error" style="color: red;">This username is already taken</p>
         	<p th:if="${invalidParola}" class="error" style="color: red;">This password isn't strong enough</p>
         </div>
         

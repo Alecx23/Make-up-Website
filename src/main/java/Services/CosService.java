@@ -16,10 +16,6 @@ public class CosService {
 		cosRepository.save(cos);
 	}
 	
-	public void removeCos(Cos cos) {
-		cosRepository.delete(cos);
-	}
-	
 	public CosRepository getCosRepository() {
 		return cosRepository;
 	}

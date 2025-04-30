@@ -15,22 +15,17 @@
         <div class="nav-container">
         	<a href="/" class="company-name">Aura Secret</a>
             <nav>
-                <ul class="nav-center">
-                    <li><a href="#">Magazine</a></li>
-                    <li><a href="#">Noutăți</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
                 <ul class="nav-right">
                     <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                     <li><a href="/Cos"><i class="fa-solid fa-bag-shopping"></i></a></li>
                     <li class="user-menu">
-                        <a th:if="${utilizator.email!='user'}" href="#"><i class="fa-solid fa-circle-user"></i></a>
-                        <ul th:if="${utilizator.email!='user'}" class="dropdown">
+                        <a th:if="${utilizator.nume!='user'}" href="#"><i class="fa-solid fa-circle-user"></i></a>
+                        <ul th:if="${utilizator.nume!='user'}" class="dropdown">
                             <li><a href="#">Orders</a></li>
                             <li><a href="/preferate">Favorites</a></li>
                             <li><a href="/logOut">Log Out</a></li>
                         </ul>
-                        <a th:unless="${utilizator.email!='user'}" href="/signin"><i class="fa-solid fa-circle-user"></i></a>
+                        <a th:unless="${utilizator.nume!='user'}" href="/signin"><i class="fa-solid fa-circle-user"></i></a>
                     </li>
                 </ul>
             </nav>
@@ -43,7 +38,7 @@
                 <img th:src="${produs.img}" alt="Product image">
             </div>
             <div class="product-details">
-                <h3 class="brand">Armani</h3>
+                <h3 class="brand">Nala</h3>
                 <h1 class="product-title" th:text="${produs.nume}"></h1>
                 <p class="description" th:text="${produs.desc}"></p>
                 <p class="price" th:text="${produs.pret} + ' Lei'"><strong></strong></p>

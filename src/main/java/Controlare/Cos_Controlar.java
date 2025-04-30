@@ -8,20 +8,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import Services.CosService;
-import Services.ProductService;
-import Services.UtilizatorService;
+import Services.ProduseService;
+import Services.PersoanaService;
 import obiecte.Cos;
-import obiecte.Persoane;
+import obiecte.Persoana;
 import obiecte.Produs;
 
 @Controller
 public class Cos_Controlar {
 
 	@Autowired
-	private ProductService productService;
+	private ProduseService produseService;
 	
 	@Autowired
-	private UtilizatorService utilizatorService;
+	private PersoanaService persoaneService;
 	
 	@Autowired
 	private CosService cosService;
@@ -29,17 +29,17 @@ public class Cos_Controlar {
 	@PostMapping("/addCos")
 	public String addToCos(@RequestParam Long produsId) {
 		
-		Produs produs = productService.getProductRepository().findById(produsId).orElse(null);
-		Persoane utilizator = utilizatorService.getUtilizatorRepository().findById(LogIn_SignIn_Controlar.account.getId()).orElse(null);
+		Produs produs = produseService.getProduseRepository().findById(produsId).orElse(null);
+		Persoana persoana = persoaneService.getPersoaneRepository().findById(LogIn_SignIn_Controlar.cont.getId()).orElse(null);
 		
-		if(produs==null||utilizator==null) {
+		if(produs==null||persoana==null) {
 			return "redirect:/";
 		}
 		
-		Cos utilCos = utilizator.getCos();
+		Cos persCos = persoana.getCos();
 		
-		utilCos.addCos(produs);
-		cosService.addCos(utilCos);
+		persCos.addCos(produs);
+		cosService.addCos(persCos);
 		
 		return "redirect:/product/"+produsId.toString();
 	}
@@ -47,17 +47,17 @@ public class Cos_Controlar {
 	@PostMapping("removeCos")
 	public String removeToCos(@RequestParam Long produsId) {
 		
-		Produs produs = productService.getProductRepository().findById(produsId).orElse(null);
-		Persoane utilizator = utilizatorService.getUtilizatorRepository().findById(LogIn_SignIn_Controlar.account.getId()).orElse(null);
+		Produs produs = produseService.getProduseRepository().findById(produsId).orElse(null);
+		Persoana persoana = persoaneService.getPersoaneRepository().findById(LogIn_SignIn_Controlar.cont.getId()).orElse(null);
 		
-		if(produs==null||utilizator==null) {
+		if(produs==null||persoana==null) {
 			return "redirect:/";
 		}
 		
-		Cos utilCos = utilizator.getCos();
+		Cos persCos = persoana.getCos();
 		
-		utilCos.stergereCos(produs);
-		cosService.addCos(utilCos);
+		persCos.stergereCos(produs);
+		cosService.addCos(persCos);
 		
 		return "redirect:/Cos";
 	}
@@ -65,14 +65,14 @@ public class Cos_Controlar {
 	@GetMapping("/Cos")
 	public String Cos(Model model) {
 		
-		Persoane utilizator = utilizatorService.getUtilizatorRepository().findById(LogIn_SignIn_Controlar.account.getId()).orElse(null);
-		Cos utilCos = utilizator.getCos();
+		Persoana persoana = persoaneService.getPersoaneRepository().findById(LogIn_SignIn_Controlar.cont.getId()).orElse(null);
+		Cos persCos = persoana.getCos();
 		
-		model.addAttribute("CosId",utilCos.getId());
-		model.addAttribute("ProduseCos",utilCos.getCos());
-		model.addAttribute("utilizator",utilizator);
-		if(utilCos.totalProdCos()!=0)
-			model.addAttribute("titlu","Cos("+utilCos.totalProdCos().toString()+")");
+		model.addAttribute("CosId",persCos.getId());
+		model.addAttribute("ProduseCos",persCos.getCos());
+		model.addAttribute("utilizator",persoana);
+		if(persCos.totalProdCos()!=0)
+			model.addAttribute("titlu","Cos("+persCos.totalProdCos().toString()+")");
 		else model.addAttribute("titlu","Cos");
 		
 		return "cos";

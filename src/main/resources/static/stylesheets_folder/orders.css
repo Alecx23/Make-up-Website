@@ -1,0 +1,25 @@
+.Title {
+    margin-left: 20px; 
+}
+
+.orders {
+    font-size: 24px; 
+    padding: 20px;
+    list-style: none; 
+}
+
+.orders li {
+    margin-bottom: 15px;
+    margin-left:100px; 
+}
+
+.orders a {
+    text-decoration: none; 
+    color: black; 
+    font-weight: bold; 
+   
+}
+
+.orders a:hover {
+    color: #ff6b6b; /* Changes color on hover */
+}

@@ -14,9 +14,9 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
-public class Persoane {
+public class Persoana {
 
-	private String email, parola;
+	private String nume, parola;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -34,21 +34,21 @@ public class Persoane {
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "utilizator")
     private List<Comanda> comenzi = new ArrayList<>();
 	
-	public Persoane() {
+	public Persoana() {
 		
 	}
 	
-	public Persoane(String email, String parola) {
-		this.email = email;
+	public Persoana(String nume, String parola) {
+		this.nume = nume;
 		this.parola=parola;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getNume() {
+		return nume;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmail(String nume) {
+		this.nume = nume;
 	}
 
 	public String getParola() {

@@ -2,6 +2,10 @@
     margin-left: 40px;
 }
 
+.pret{
+	margin-left:60px;
+}
+
 .products {
 	margin: auto;
     display: grid;

@@ -23,7 +23,7 @@ public class Comanda {
 	
 	@ManyToOne
     @JoinColumn(name = "utilizator_id")
-    private Persoane utilizator;
+    private Persoana utilizator;
 	
 	@ElementCollection
     @CollectionTable(name = "comanda_produse", joinColumns = @JoinColumn(name = "comanda_id"))
@@ -68,12 +68,12 @@ public class Comanda {
 	}
 
 
-	public Persoane getUtilizator() {
+	public Persoana getUtilizator() {
 		return utilizator;
 	}
 
 
-	public void setUtilizator(Persoane utilizator) {
+	public void setUtilizator(Persoana utilizator) {
 		this.utilizator = utilizator;
 	}
 
